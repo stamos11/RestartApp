@@ -15,10 +15,13 @@ struct ContentView: View {
         ZStack {
             if isOnboardingViewActive {
                 OnboardingView()
+                    .opacity(isOnboardingViewActive ? 1 : 0)
             } else {
                 HomeView()
+                    .opacity(isOnboardingViewActive ? 0 : 1)
             }
         }
+        .animation(.easeOut(duration: 1), value: isOnboardingViewActive)
     }
 }
 
